@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# The code will recursively search all the sub-directories from the current directory.
+# Removes all *.class files.
+# Created by: Gokul Kannan Sadasivam
+# Created on: 1 July 2017
+# Last Updated: 1 July 2017
+
+packages=`find . -type d`
+
+for package in $packages
+do
+	trash $package/*.class 2> /dev/null
+	echo $package
+done
+
+echo "Done!"
