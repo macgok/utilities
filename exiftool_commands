@@ -1,0 +1,36 @@
+
+DATE TIME
+---------
+exiftool -DateTimeOriginal='2008:05:20 10:10:00' image.JPG	#Add/Change DateTimeOriginal
+exiftool -AllDates='2010:08:08 15:35:33' -overwrite_original image.jpg	#single image
+exiftool -AllDates='2010:08:08 15:35:33' -overwrite_original ./images/	#a directory
+exiftool -AllDates-=720:00 -overwrite_original images	#-720 hours
+
+
+CONDITIONS
+-----------
+-if '$make eq "Canon"'
+
+
+OPTIONS
+--------
+-overwrite_original
+
+
+THUMBNAIL
+----------
+exif --extract-thumbnail --output=thumbnail.jpg image.jpg	#Extract the thumbnail into the file thumbnail.jpg
+
+
+GEO-LOCATION
+------------
+exiftool -GPSLongitude="76.87846516146278" -GPSLatitude="11.399615072119442" -GPSLatitudeRef="N" -GPSLongitudeRef="E" .	#Alpha GK School
+exiftool -geotag= image.png	#remove geotag
+
+
+REMOVE TAGS
+-----------
+exiftool -all= ./images/	#Remove all the metadata (all files in a directory)
+exiftool -all= image.JPG	#Remove all the metadata
+exiftool -all= -tagsfromfile @ -gps:all *.jpg	#Remove all metadata except gps
+
